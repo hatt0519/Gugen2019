@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ExtendedFABTheme" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="android:background">@drawable/extended_fab_bg</item>
+    </style>
+
 </resources>
