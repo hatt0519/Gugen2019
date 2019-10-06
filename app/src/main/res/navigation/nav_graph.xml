@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph" app:startDestination="@id/plant_status">
+
+    <fragment
+        android:id="@+id/plant_status"
+        android:name="xyz.moroku0519.gugen2019.PlantStatusFragment"
+        android:label="PlantStatus"
+        tools:layout="@layout/fragment_plant_status"/>
+</navigation>
