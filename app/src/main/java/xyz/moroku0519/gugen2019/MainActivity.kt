@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
                 rainy.startAnimation(
                     AnimationUtils.loadAnimation(this@MainActivity, R.anim.fade_out)
                 )
+                message.text = "ありがとう！！"
             }
 
             override fun onAnimationCancel(p0: Animator?) {
