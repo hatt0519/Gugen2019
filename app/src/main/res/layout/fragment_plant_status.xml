@@ -6,15 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/rainy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_rawRes="@raw/rainy"/>
-
     <ImageView
         android:id="@+id/plant_status"
         android:layout_width="0dp"
@@ -29,14 +20,14 @@
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="お水が欲しいよ〜"
         android:textColor="@color/primaryTextColor"
         android:textSize="22dp"
+        app:layout_constraintBottom_toTopOf="@id/send"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/send"
-        android:layout_margin="16dp"
-    />
+        />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/send"

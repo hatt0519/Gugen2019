@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph" app:startDestination="@id/plant_status">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/plant_status">
 
     <fragment
         android:id="@+id/plant_status"
         android:name="xyz.moroku0519.gugen2019.PlantStatusFragment"
         android:label="PlantStatus"
-        tools:layout="@layout/fragment_plant_status"/>
+        tools:layout="@layout/fragment_plant_status">
+        <action
+            android:id="@+id/action_plant_status_to_water"
+            app:destination="@id/water"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"/>
+    </fragment>
+    <fragment
+        android:id="@+id/water"
+        android:name="xyz.moroku0519.gugen2019.WaterFragment"
+        android:label="Water"
+        tools:layout="@layout/fragment_give_water"
+        >
+    </fragment>
+
 </navigation>
