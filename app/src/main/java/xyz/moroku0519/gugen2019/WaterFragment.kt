@@ -18,7 +18,10 @@ class WaterFragment : Fragment() {
             },
             {
                 water.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.fade_out))
-                findNavController().popBackStack(R.id.plant_status, false)
+                findNavController().navigate(
+                    WaterFragmentDirections.actionWaterToPlantStatus().apply {
+                        message = "ありがとう"
+                    })
             }
         )
 

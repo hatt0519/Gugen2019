@@ -16,6 +16,11 @@
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"/>
+        <argument
+            android:name="message"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true"/>
     </fragment>
     <fragment
         android:id="@+id/water"
@@ -23,6 +28,10 @@
         android:label="Water"
         tools:layout="@layout/fragment_give_water"
         >
+        <action
+            android:id="@+id/action_water_to_plant_status"
+            app:destination="@id/plant_status"
+            app:enterAnim="@anim/fade_in"/>
     </fragment>
 
 </navigation>
