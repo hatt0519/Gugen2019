@@ -1,4 +1,4 @@
-package xyz.moroku0519.gugen2019
+package xyz.moroku0519.gugen2019.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_plant_status.view.*
+import xyz.moroku0519.gugen2019.PlantStatusFragmentArgs
+import xyz.moroku0519.gugen2019.R
 
 class PlantStatusFragment : Fragment() {
     private val args : PlantStatusFragmentArgs by navArgs()

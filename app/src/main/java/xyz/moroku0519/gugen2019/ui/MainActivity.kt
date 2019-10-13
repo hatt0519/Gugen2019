@@ -1,7 +1,8 @@
-package xyz.moroku0519.gugen2019
+package xyz.moroku0519.gugen2019.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import xyz.moroku0519.gugen2019.R
 
 class MainActivity : AppCompatActivity() {
 

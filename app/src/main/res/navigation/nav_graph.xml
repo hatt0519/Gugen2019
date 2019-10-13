@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/plant_status"
-        android:name="xyz.moroku0519.gugen2019.PlantStatusFragment"
+        android:name="xyz.moroku0519.gugen2019.ui.PlantStatusFragment"
         android:label="PlantStatus"
         tools:layout="@layout/fragment_plant_status">
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/water"
-        android:name="xyz.moroku0519.gugen2019.WaterFragment"
+        android:name="xyz.moroku0519.gugen2019.ui.WaterFragment"
         android:label="Water"
         tools:layout="@layout/fragment_give_water"
         >
