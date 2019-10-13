@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_give_water.view.*
 import xyz.moroku0519.gugen2019.R
-import xyz.moroku0519.gugen2019.WaterFragmentDirections
 
 class WaterFragment : Fragment() {
     private val View.startEndAnimatorListener: StartEndAnimatorListener
