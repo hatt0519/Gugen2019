@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-            app:startDestination="@id/plant_status">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/plant_status">
 
     <fragment
         android:id="@+id/plant_status"
@@ -15,23 +15,21 @@
             app:destination="@id/water"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"/>
+            app:popEnterAnim="@anim/fade_in" />
         <argument
-            android:name="message"
-            android:defaultValue="@null"
-            app:argType="string"
-            app:nullable="true"/>
+            android:name="girlStatus"
+            android:defaultValue="NORMAL"
+            app:argType=".data.GirlStatus" />
     </fragment>
     <fragment
         android:id="@+id/water"
         android:name="xyz.moroku0519.gugen2019.ui.WaterFragment"
         android:label="Water"
-        tools:layout="@layout/fragment_give_water"
-        >
+        tools:layout="@layout/fragment_give_water">
         <action
             android:id="@+id/action_water_to_plant_status"
             app:destination="@id/plant_status"
-            app:enterAnim="@anim/fade_in"/>
+            app:enterAnim="@anim/fade_in" />
     </fragment>
 
 </navigation>

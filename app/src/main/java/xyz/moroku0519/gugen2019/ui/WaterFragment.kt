@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_give_water.view.*
 import xyz.moroku0519.gugen2019.R
+import xyz.moroku0519.gugen2019.data.GirlStatus
 
 class WaterFragment : Fragment() {
     private val View.startEndAnimatorListener: StartEndAnimatorListener
@@ -31,12 +32,16 @@ class WaterFragment : Fragment() {
                 )
                 findNavController().navigate(
                     WaterFragmentDirections.actionWaterToPlantStatus().apply {
-                        message = "ありがとう"
+                        girlStatus = GirlStatus.GOOD
                     })
             }
         )
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View =
         inflater.inflate(R.layout.fragment_give_water, container, false).apply {
             water.addAnimatorListener(startEndAnimatorListener)
         }

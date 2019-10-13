@@ -6,22 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import xyz.moroku0519.gugen2019.data.CommandRepository
-import xyz.moroku0519.gugen2019.data.CommandRepositoryImpl
+import xyz.moroku0519.gugen2019.GugenApplication
 import xyz.moroku0519.gugen2019.databinding.FragmentPlantStatusBinding
 
 class PlantStatusFragment : Fragment() {
     private val args: PlantStatusFragmentArgs by navArgs()
-    private val commandRepository: CommandRepository = CommandRepositoryImpl()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? =
         FragmentPlantStatusBinding.inflate(inflater, container, false).apply {
-            viewModel = PlantStatusViewModelImpl()
+            viewModel = PlantStatusViewModelImpl(GugenApplication.application).apply {
+                plantStatus.postValue(args.girlStatus)
+            }
+            lifecycleOwner = viewLifecycleOwner
+
         }.root
 
 }
-
-

@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="xyz.moroku0519.gugen2019.ui.PlantStatusViewModel"/>
+            type="xyz.moroku0519.gugen2019.ui.PlantStatusViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,18 +16,18 @@
             android:id="@+id/plant_status"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/flower_tullip_hachiue"
+            android:src="@{viewModel.girlImage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="お水が欲しいよ〜"
+            android:text="@{viewModel.message}"
             android:textColor="@color/primaryTextColor"
             android:textSize="22dp"
             app:layout_constraintBottom_toTopOf="@id/send"
@@ -41,12 +41,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:backgroundTint="@color/primaryColor"
+            android:onClick="@{viewModel::onWaterButtonClick}"
             android:text="@string/give_water"
             android:textColor="@color/primaryTextColor"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
