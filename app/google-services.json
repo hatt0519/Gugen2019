@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "195996512906",
+    "firebase_url": "https://gugen2019-81423.firebaseio.com",
+    "project_id": "gugen2019-81423",
+    "storage_bucket": "gugen2019-81423.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195996512906:android:e6cad66791f8f5581e7373",
+        "android_client_info": {
+          "package_name": "xyz.moroku0519.gugen2019"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195996512906-qj3gil2khhac4djfpv1imgkucfjd0kve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdB_OLKO9NRybOXXLRBMlehS_fryqTyec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195996512906-qj3gil2khhac4djfpv1imgkucfjd0kve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
