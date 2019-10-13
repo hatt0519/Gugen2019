@@ -9,6 +9,7 @@ interface PlantStatusViewModel {
     val isWaterButtonVisible: LiveData<Boolean>
     val isSunlightButtonVisible: LiveData<Boolean>
     val loveMeterParameter: LiveData<Float>
+    val message : LiveData<String>
     fun onWaterButtonClick(v: View)
     fun onSunlightButtonClick(v: View)
 }
