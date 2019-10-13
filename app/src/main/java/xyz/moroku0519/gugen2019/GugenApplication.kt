@@ -1,7 +1,6 @@
 package xyz.moroku0519.gugen2019
 
 import android.app.Application
-import android.content.Context
 
 class GugenApplication : Application() {
     override fun onCreate() {
@@ -11,7 +10,7 @@ class GugenApplication : Application() {
 
     companion object {
         private lateinit var gugenApplication: GugenApplication
-        val applicationContext: Context
-            get() = gugenApplication.applicationContext
+        val application: Application
+            get() = gugenApplication
     }
 }
