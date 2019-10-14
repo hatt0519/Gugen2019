@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
 import xyz.moroku0519.gugen2019.GugenApplication
 import xyz.moroku0519.gugen2019.databinding.FragmentPlantStatusBinding
@@ -17,9 +18,13 @@ class PlantStatusFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? =
         FragmentPlantStatusBinding.inflate(inflater, container, false).apply {
-            viewModel = PlantStatusViewModelImpl(GugenApplication.application).apply {
-                plantStatus.postValue(args.girlStatus)
-            }
+            viewModel = ViewModelProviders.of(
+                this@PlantStatusFragment,
+                PlantStatusViewModelImpl.ViewModelFactory(GugenApplication.application)
+            ).get(PlantStatusViewModelImpl::class.java)
+                .apply {
+                    plantStatus.postValue(args.girlStatus)
+                }
             lifecycleOwner = viewLifecycleOwner
         }.root
 

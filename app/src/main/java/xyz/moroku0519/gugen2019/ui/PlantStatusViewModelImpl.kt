@@ -9,6 +9,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import xyz.moroku0519.gugen2019.GugenApplication
 import xyz.moroku0519.gugen2019.R
@@ -47,5 +49,12 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
             { girl -> plantStatus.postValue(girl.girlStatus) },
             { e -> Log.e("error", e?.message) }
         )
+    }
+
+    class ViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+            PlantStatusViewModelImpl(application) as T
+
     }
 }
