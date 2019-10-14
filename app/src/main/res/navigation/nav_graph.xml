@@ -19,7 +19,7 @@
         <argument
             android:name="girlStatus"
             android:defaultValue="NORMAL"
-            app:argType=".data.GirlStatus" />
+            app:argType=".data.entity.GirlStatus" />
     </fragment>
     <fragment
         android:id="@+id/water"

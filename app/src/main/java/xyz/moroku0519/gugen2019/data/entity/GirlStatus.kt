@@ -1,4 +1,4 @@
-package xyz.moroku0519.gugen2019.data
+package xyz.moroku0519.gugen2019.data.entity
 
 import androidx.annotation.DrawableRes
 import xyz.moroku0519.gugen2019.R
