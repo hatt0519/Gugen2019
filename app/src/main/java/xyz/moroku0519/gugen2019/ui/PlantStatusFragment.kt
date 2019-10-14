@@ -21,7 +21,6 @@ class PlantStatusFragment : Fragment() {
                 plantStatus.postValue(args.girlStatus)
             }
             lifecycleOwner = viewLifecycleOwner
-
         }.root
 
 }
