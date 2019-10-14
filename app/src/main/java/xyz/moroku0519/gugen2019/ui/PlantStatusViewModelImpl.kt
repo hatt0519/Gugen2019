@@ -6,11 +6,12 @@ import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.Lifecycle.Event
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import xyz.moroku0519.gugen2019.GugenApplication
 import xyz.moroku0519.gugen2019.R
@@ -21,7 +22,7 @@ import xyz.moroku0519.gugen2019.data.GirlsRepositoryImpl
 import xyz.moroku0519.gugen2019.data.entity.GirlStatus
 
 class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
-    AndroidViewModel(application) {
+    AndroidViewModel(application), LifecycleObserver {
     private val commandRepository: CommandRepository = CommandRepositoryImpl()
     private val girlsRepository: GirlsRepository = GirlsRepositoryImpl()
     override val plantStatus: MutableLiveData<GirlStatus> = MutableLiveData()
@@ -43,18 +44,12 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     override fun onSunlightButtonClick(v: View) {
     }
 
-    init {
+    @OnLifecycleEvent(Event.ON_CREATE)
+    fun loadGirl() {
         // TODO:本当は一発でLiveData変換したい...
         girlsRepository.loadGirl(
             { girl -> plantStatus.postValue(girl.girlStatus) },
             { e -> Log.e("error", e?.message) }
         )
-    }
-
-    class ViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
-        @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-            PlantStatusViewModelImpl(application) as T
-
     }
 }
