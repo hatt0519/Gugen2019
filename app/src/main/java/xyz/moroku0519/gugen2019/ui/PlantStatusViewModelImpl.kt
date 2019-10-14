@@ -13,7 +13,7 @@ import xyz.moroku0519.gugen2019.GugenApplication
 import xyz.moroku0519.gugen2019.R
 import xyz.moroku0519.gugen2019.data.CommandRepository
 import xyz.moroku0519.gugen2019.data.CommandRepositoryImpl
-import xyz.moroku0519.gugen2019.data.GirlStatus
+import xyz.moroku0519.gugen2019.data.entity.GirlStatus
 
 class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     AndroidViewModel(application) {

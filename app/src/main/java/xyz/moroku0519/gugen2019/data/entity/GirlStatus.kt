@@ -6,5 +6,15 @@ import xyz.moroku0519.gugen2019.R
 enum class GirlStatus(@DrawableRes val drawableId: Int, val message: String) {
     GOOD(R.drawable.good, "ありがとう！"),
     BAD(R.drawable.bad, "お水が欲しいよ〜"),
-    NORMAL(R.drawable.normal, "ご機嫌いかが？")
+    NORMAL(R.drawable.normal, "ご機嫌いかが？");
+
+    companion object {
+        fun fromId(id: Int): GirlStatus =
+            when (id) {
+                0 -> GOOD
+                1 -> BAD
+                2 -> NORMAL
+                else -> throw IllegalArgumentException("illegalId")
+            }
+    }
 }
