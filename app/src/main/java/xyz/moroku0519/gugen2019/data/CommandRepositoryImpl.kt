@@ -15,6 +15,7 @@ class CommandRepositoryImpl : CommandRepository {
         child.child("id").setValue(water.id)
         child.child("name").setValue(water.name)
         child.child("isEnabled").setValue(water.isEnabled)
+        child.child("timestamp").setValue(water.timestamp)
     }
 
     override fun sendSunLight() {
