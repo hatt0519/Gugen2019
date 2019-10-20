@@ -5,6 +5,7 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
+import xyz.moroku0519.gugen2019.BuildConfig
 import xyz.moroku0519.gugen2019.data.entity.Girl
 
 class GirlsRepositoryImpl : GirlsRepository {
@@ -29,7 +30,7 @@ class GirlsRepositoryImpl : GirlsRepository {
 
     companion object {
         // TODO: 可変にする
-        private const val GIRL_NAME = "minako"
+        private const val GIRL_NAME = BuildConfig.GIRL_NAME
     }
 
     private inline fun <reified R> Task<DocumentSnapshot>.toResult(): R =
