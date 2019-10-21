@@ -5,3 +5,4 @@
 2. このrepositoryをclone
 3. Android Studioをもろもろセットアップしたら、 File > Open.. から clone してきたこのプロジェクトのbuild.gradleをクリック
 4. gradle syncが終わり、runを押してビルド
+5. gradle.propertiesにGIRL_NAMEを追記
