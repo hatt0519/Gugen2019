@@ -14,6 +14,7 @@ class CommandRepositoryImpl : CommandRepository {
     }
 
     override fun sendSunLight() {
+        reference.send(Care.SunlightCare(true))
     }
 
     private fun DatabaseReference.send(care: Care) {
