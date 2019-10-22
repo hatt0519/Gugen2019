@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle.Event
 import androidx.lifecycle.LifecycleObserver
@@ -30,14 +31,9 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     override val girlImage: LiveData<Drawable> = Transformations.map(plantStatus) {
         ContextCompat.getDrawable(getApplication<GugenApplication>(), it.drawableId)
     }
-    override val isWaterButtonVisible: LiveData<Boolean> =
-            Transformations.map(plantStatus) { status ->
-                status == GirlStatus.POOR_WATER
-            }
-    override val isSunlightButtonVisible: LiveData<Boolean> =
-            Transformations.map(plantStatus) { status ->
-                status == GirlStatus.POOR_SUNLIGHT
-            }
+    override val isButtonVisible: LiveData<Boolean> = Transformations.map(plantStatus) { status ->
+        status == GirlStatus.POOR_WATER || status == GirlStatus.POOR_SUNLIGHT
+    }
     override val loveMeterParameter: LiveData<Float> = MutableLiveData(4.0f)
     override val message: LiveData<String> = Transformations.map(plantStatus) {
         it.message
@@ -80,5 +76,16 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
             { girl -> plantStatus.postValue(girl.girlStatus) },
             { e -> Log.e("error", e?.message) }
         )
+    }
+
+    companion object {
+        @JvmStatic
+        @BindingAdapter("isVisible")
+        fun View.isVisible(isVisible: Boolean) {
+            visibility = when (isVisible) {
+                true -> View.VISIBLE
+                false -> View.GONE
+            }
+        }
     }
 }

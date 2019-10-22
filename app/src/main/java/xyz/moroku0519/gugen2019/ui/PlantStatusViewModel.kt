@@ -9,8 +9,7 @@ import xyz.moroku0519.gugen2019.data.entity.GirlStatus
 interface PlantStatusViewModel {
     val plantStatus: MutableLiveData<GirlStatus>
     val girlImage: LiveData<Drawable>
-    val isWaterButtonVisible: LiveData<Boolean>
-    val isSunlightButtonVisible: LiveData<Boolean>
+    val isButtonVisible: LiveData<Boolean>
     val loveMeterParameter: LiveData<Float>
     val message: LiveData<String>
     val buttonLabel: LiveData<String>
