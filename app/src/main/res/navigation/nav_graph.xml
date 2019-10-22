@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_plant_status">
         <action
             android:id="@+id/action_plant_status_to_loading"
-            app:destination="@id/water"
+            app:destination="@id/loading"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popExitAnim="@anim/fade_in" />

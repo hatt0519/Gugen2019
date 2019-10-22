@@ -19,18 +19,19 @@ class LoadingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View =
         inflater.inflate(R.layout.fragment_loading, container, false).apply {
-            water.addAnimatorListener(startEndAnimatorListener)
+            loading.addAnimatorListener(startEndAnimatorListener)
+            loading.setAnimation(R.raw.water)
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.water.playAnimation()
+        view.loading.playAnimation()
     }
 
     private val View.startEndAnimatorListener: StartEndAnimatorListener
         get() = StartEndAnimatorListener(
             {
-                water.startAnimation(
+                loading.startAnimation(
                     AnimationUtils.loadAnimation(
                         requireContext(),
                         R.anim.fade_in
@@ -38,7 +39,7 @@ class LoadingFragment : Fragment() {
                 )
             },
             {
-                water.startAnimation(
+                loading.startAnimation(
                     AnimationUtils.loadAnimation(
                         requireContext(),
                         R.anim.fade_out
