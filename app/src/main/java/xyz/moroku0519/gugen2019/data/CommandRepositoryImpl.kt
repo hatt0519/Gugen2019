@@ -11,7 +11,11 @@ class CommandRepositoryImpl : CommandRepository {
 
     override fun sendWater() {
         val water = Care.WaterCare(true)
-        reference.child("care").setValue(water.toJson())
+        val child = reference.child("care")
+        child.child("id").setValue(water.id)
+        child.child("name").setValue(water.name)
+        child.child("isEnabled").setValue(water.isEnabled)
+        child.child("timestamp").setValue(water.timestamp)
     }
 
     override fun sendSunLight() {
