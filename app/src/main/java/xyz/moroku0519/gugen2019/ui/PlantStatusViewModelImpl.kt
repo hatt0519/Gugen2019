@@ -29,8 +29,14 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     override val girlImage: LiveData<Drawable> = Transformations.map(plantStatus) {
         ContextCompat.getDrawable(getApplication<GugenApplication>(), it.drawableId)
     }
-    override val isWaterButtonVisible: LiveData<Boolean> = MutableLiveData(true)
-    override val isSunlightButtonVisible: LiveData<Boolean> = MutableLiveData(false)
+    override val isWaterButtonVisible: LiveData<Boolean> =
+        Transformations.map(plantStatus) { status ->
+            status == GirlStatus.POOR_WATER
+        }
+    override val isSunlightButtonVisible: LiveData<Boolean> =
+        Transformations.map(plantStatus) { status ->
+            status == GirlStatus.POOR_SUNLIGHT
+        }
     override val loveMeterParameter: LiveData<Float> = MutableLiveData(4.0f)
     override val message: LiveData<String> = Transformations.map(plantStatus) {
         it.message
