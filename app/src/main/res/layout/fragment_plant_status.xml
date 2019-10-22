@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:backgroundTint="@color/primaryColor"
-            android:onClick="@{viewModel::onWaterButtonClick}"
+            android:onClick="@{viewModel::onButtonClick}"
             android:text="@{viewModel.buttonLabel}"
             android:textColor="@color/primaryTextColor"
             android:textSize="18sp"

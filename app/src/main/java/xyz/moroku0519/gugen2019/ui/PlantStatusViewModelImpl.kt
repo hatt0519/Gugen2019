@@ -51,15 +51,17 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
         }
     }
 
-    override fun onWaterButtonClick(v: View) {
-        onButtonClick(v, GirlStatus.POOR_WATER, Care.WaterCare(true))
+    override fun onButtonClick(v: View) {
+        plantStatus.value?.let { status ->
+            when (status) {
+                GirlStatus.POOR_SUNLIGHT -> navigateTo(v, status, Care.SunlightCare(true))
+                GirlStatus.POOR_WATER -> navigateTo(v, status, Care.WaterCare(true))
+                else -> return
+            }
+        }
     }
 
-    override fun onSunlightButtonClick(v: View) {
-        onButtonClick(v, GirlStatus.POOR_SUNLIGHT, Care.SunlightCare(true))
-    }
-
-    private fun onButtonClick(v: View, girlStatus: GirlStatus, care: Care) {
+    private fun navigateTo(v: View, girlStatus: GirlStatus, care: Care) {
         v.findNavController()
                 .navigate(PlantStatusFragmentDirections.actionPlantStatusToLoading().apply {
                     this.girlStatus = girlStatus

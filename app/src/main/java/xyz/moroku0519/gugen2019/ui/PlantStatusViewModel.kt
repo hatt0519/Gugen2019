@@ -14,6 +14,5 @@ interface PlantStatusViewModel {
     val loveMeterParameter: LiveData<Float>
     val message: LiveData<String>
     val buttonLabel: LiveData<String>
-    fun onWaterButtonClick(v: View)
-    fun onSunlightButtonClick(v: View)
+    fun onButtonClick(v: View)
 }
