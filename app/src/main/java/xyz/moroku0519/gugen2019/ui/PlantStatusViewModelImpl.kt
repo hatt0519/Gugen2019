@@ -14,7 +14,6 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.Transformations
 import androidx.navigation.findNavController
 import xyz.moroku0519.gugen2019.GugenApplication
-import xyz.moroku0519.gugen2019.R
 import xyz.moroku0519.gugen2019.data.CommandRepository
 import xyz.moroku0519.gugen2019.data.CommandRepositoryImpl
 import xyz.moroku0519.gugen2019.data.GirlsRepository
@@ -43,11 +42,19 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     }
 
     override fun onWaterButtonClick(v: View) {
-        v.findNavController().navigate(R.id.action_plant_status_to_loading)
+        v.findNavController()
+            .navigate(PlantStatusFragmentDirections.actionPlantStatusToLoading().apply {
+                girlStatus = GirlStatus.POOR_WATER
+            })
         commandRepository.sendWater()
     }
 
     override fun onSunlightButtonClick(v: View) {
+        v.findNavController()
+            .navigate(PlantStatusFragmentDirections.actionPlantStatusToLoading().apply {
+                girlStatus = GirlStatus.POOR_SUNLIGHT
+            })
+        commandRepository.sendSunLight()
     }
 
     @OnLifecycleEvent(Event.ON_CREATE)
