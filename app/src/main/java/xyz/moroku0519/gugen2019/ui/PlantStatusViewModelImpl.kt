@@ -18,6 +18,7 @@ import xyz.moroku0519.gugen2019.data.CommandRepository
 import xyz.moroku0519.gugen2019.data.CommandRepositoryImpl
 import xyz.moroku0519.gugen2019.data.GirlsRepository
 import xyz.moroku0519.gugen2019.data.GirlsRepositoryImpl
+import xyz.moroku0519.gugen2019.data.entity.Care
 import xyz.moroku0519.gugen2019.data.entity.GirlStatus
 
 class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
@@ -46,7 +47,7 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
             .navigate(PlantStatusFragmentDirections.actionPlantStatusToLoading().apply {
                 girlStatus = GirlStatus.POOR_WATER
             })
-        commandRepository.sendWater()
+        commandRepository.send(Care.WaterCare(true))
     }
 
     override fun onSunlightButtonClick(v: View) {
@@ -54,7 +55,7 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
             .navigate(PlantStatusFragmentDirections.actionPlantStatusToLoading().apply {
                 girlStatus = GirlStatus.POOR_SUNLIGHT
             })
-        commandRepository.sendSunLight()
+        commandRepository.send(Care.SunlightCare(true))
     }
 
     @OnLifecycleEvent(Event.ON_CREATE)

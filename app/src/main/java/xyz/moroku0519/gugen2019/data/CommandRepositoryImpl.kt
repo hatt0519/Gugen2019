@@ -9,12 +9,8 @@ class CommandRepositoryImpl : CommandRepository {
     private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
     private val reference: DatabaseReference = firebaseDatabase.reference
 
-    override fun sendWater() {
-        reference.send(Care.WaterCare(true))
-    }
-
-    override fun sendSunLight() {
-        reference.send(Care.SunlightCare(true))
+    override fun send(care: Care) {
+        reference.send(care)
     }
 
     private fun DatabaseReference.send(care: Care) {
