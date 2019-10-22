@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import kotlinx.android.synthetic.main.fragment_give_water.view.*
+import kotlinx.android.synthetic.main.fragment_loading.view.*
 import xyz.moroku0519.gugen2019.R
 import xyz.moroku0519.gugen2019.data.entity.GirlStatus
 
-class WaterFragment : Fragment() {
+class LoadingFragment : Fragment() {
+    
     private val View.startEndAnimatorListener: StartEndAnimatorListener
         get() = StartEndAnimatorListener(
             {
@@ -31,7 +32,7 @@ class WaterFragment : Fragment() {
                     )
                 )
                 findNavController().navigate(
-                    WaterFragmentDirections.actionWaterToPlantStatus().apply {
+                    LoadingFragmentDirections.actionLoadingToPlantStatus().apply {
                         girlStatus = GirlStatus.GOOD
                     })
             }
@@ -42,7 +43,7 @@ class WaterFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View =
-        inflater.inflate(R.layout.fragment_give_water, container, false).apply {
+        inflater.inflate(R.layout.fragment_loading, container, false).apply {
             water.addAnimatorListener(startEndAnimatorListener)
         }
 

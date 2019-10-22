@@ -11,7 +11,7 @@
         android:label="PlantStatus"
         tools:layout="@layout/fragment_plant_status">
         <action
-            android:id="@+id/action_plant_status_to_water"
+            android:id="@+id/action_plant_status_to_loading"
             app:destination="@id/water"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
@@ -22,12 +22,12 @@
             app:argType=".data.entity.GirlStatus" />
     </fragment>
     <fragment
-        android:id="@+id/water"
-        android:name="xyz.moroku0519.gugen2019.ui.WaterFragment"
-        android:label="Water"
-        tools:layout="@layout/fragment_give_water">
+        android:id="@+id/loading"
+        android:name="xyz.moroku0519.gugen2019.ui.LoadingFragment"
+        android:label="Loading"
+        tools:layout="@layout/fragment_loading">
         <action
-            android:id="@+id/action_water_to_plant_status"
+            android:id="@+id/action_loading_to_plant_status"
             app:destination="@id/plant_status"
             app:enterAnim="@anim/fade_in" />
     </fragment>

@@ -43,7 +43,7 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     }
 
     override fun onWaterButtonClick(v: View) {
-        v.findNavController().navigate(R.id.action_plant_status_to_water)
+        v.findNavController().navigate(R.id.action_plant_status_to_loading)
         commandRepository.sendWater()
     }
 
