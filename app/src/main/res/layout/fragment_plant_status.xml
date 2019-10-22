@@ -42,7 +42,7 @@
             android:layout_margin="16dp"
             android:backgroundTint="@color/primaryColor"
             android:onClick="@{viewModel::onWaterButtonClick}"
-            android:text="@string/give_water"
+            android:text="@{viewModel.buttonLabel}"
             android:textColor="@color/primaryTextColor"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Gugen2019</string>
     <string name="give_water">お水をあげる</string>
+    <string name="give_sunlight">お日さまにあてる</string>
 </resources>
