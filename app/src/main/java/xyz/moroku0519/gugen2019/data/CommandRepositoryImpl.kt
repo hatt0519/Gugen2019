@@ -10,9 +10,13 @@ class CommandRepositoryImpl : CommandRepository {
     private val reference: DatabaseReference = firebaseDatabase.reference
 
     override fun sendWater() {
-        reference.child("care").setValue(Care.WaterCare(true).toMap())
+        reference.send(Care.WaterCare(true))
     }
 
     override fun sendSunLight() {
+    }
+
+    private fun DatabaseReference.send(care: Care) {
+        child("care").setValue(care.toMap())
     }
 }
