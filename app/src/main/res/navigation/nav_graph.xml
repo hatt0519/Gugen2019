@@ -30,6 +30,10 @@
             android:id="@+id/action_loading_to_plant_status"
             app:destination="@id/plant_status"
             app:enterAnim="@anim/fade_in" />
+        <argument
+            android:name="girlStatus"
+            android:defaultValue="NORMAL"
+            app:argType=".data.entity.GirlStatus" />
     </fragment>
 
 </navigation>
