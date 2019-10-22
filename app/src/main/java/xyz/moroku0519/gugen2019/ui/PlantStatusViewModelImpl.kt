@@ -54,18 +54,22 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     override fun onButtonClick(v: View) {
         plantStatus.value?.let { status ->
             when (status) {
-                GirlStatus.POOR_SUNLIGHT -> navigateTo(v, status, Care.SunlightCare(true))
-                GirlStatus.POOR_WATER -> navigateTo(v, status, Care.WaterCare(true))
+                GirlStatus.POOR_SUNLIGHT -> status.navigateTo(v, Care.SunlightCare(true))
+                GirlStatus.POOR_WATER -> status.navigateTo(v, Care.WaterCare(true))
                 else -> return
             }
         }
     }
 
-    private fun navigateTo(v: View, girlStatus: GirlStatus, care: Care) {
+    private fun GirlStatus.navigateTo(v: View, care: Care) {
         v.findNavController()
-                .navigate(PlantStatusFragmentDirections.actionPlantStatusToLoading().apply {
-                    this.girlStatus = girlStatus
-                })
+                .navigate(
+                    PlantStatusFragmentDirections
+                            .actionPlantStatusToLoading()
+                            .also { actionPlantStatusToLoading ->
+                                actionPlantStatusToLoading.girlStatus = this
+                            }
+                )
         commandRepository.send(care)
     }
 
