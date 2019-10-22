@@ -3,11 +3,11 @@ package xyz.moroku0519.gugen2019.data.entity
 import java.time.LocalDateTime
 
 sealed class Care(
-    val id: Int,
-    val name: String,
-    val isEnabled: Boolean
+    private val id: Int,
+    private val name: String,
+    private val isEnabled: Boolean
 ) {
-    val timestamp: String = LocalDateTime.now().toString()
+    private val timestamp: String = LocalDateTime.now().toString()
     fun toMap(): Map<String, Any> =
         mapOf(
             "id" to id,
