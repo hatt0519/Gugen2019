@@ -18,6 +18,6 @@ class CommandRepositoryImpl : CommandRepository {
     }
 
     private fun DatabaseReference.send(care: Care) {
-        child("care").setValue(care.toMap())
+        child(care.pathName).setValue(care.toMap())
     }
 }
