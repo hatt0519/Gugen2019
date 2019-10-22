@@ -13,7 +13,20 @@ import xyz.moroku0519.gugen2019.R
 import xyz.moroku0519.gugen2019.data.entity.GirlStatus
 
 class LoadingFragment : Fragment() {
-    
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View =
+        inflater.inflate(R.layout.fragment_loading, container, false).apply {
+            water.addAnimatorListener(startEndAnimatorListener)
+        }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.water.playAnimation()
+    }
+
     private val View.startEndAnimatorListener: StartEndAnimatorListener
         get() = StartEndAnimatorListener(
             {
@@ -37,20 +50,6 @@ class LoadingFragment : Fragment() {
                     })
             }
         )
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View =
-        inflater.inflate(R.layout.fragment_loading, container, false).apply {
-            water.addAnimatorListener(startEndAnimatorListener)
-        }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        view.water.playAnimation()
-    }
 
     private class StartEndAnimatorListener(
         private val onAnimationStart: () -> Unit,
