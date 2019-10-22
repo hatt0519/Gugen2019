@@ -43,19 +43,19 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     }
 
     override fun onWaterButtonClick(v: View) {
-        v.findNavController()
-            .navigate(PlantStatusFragmentDirections.actionPlantStatusToLoading().apply {
-                girlStatus = GirlStatus.POOR_WATER
-            })
-        commandRepository.send(Care.WaterCare(true))
+        onButtonClick(v, GirlStatus.POOR_WATER, Care.WaterCare(true))
     }
 
     override fun onSunlightButtonClick(v: View) {
+        onButtonClick(v, GirlStatus.POOR_SUNLIGHT, Care.SunlightCare(true))
+    }
+
+    private fun onButtonClick(v: View, girlStatus: GirlStatus, care: Care) {
         v.findNavController()
             .navigate(PlantStatusFragmentDirections.actionPlantStatusToLoading().apply {
-                girlStatus = GirlStatus.POOR_SUNLIGHT
+                this.girlStatus = girlStatus
             })
-        commandRepository.send(Care.SunlightCare(true))
+        commandRepository.send(care)
     }
 
     @OnLifecycleEvent(Event.ON_CREATE)
