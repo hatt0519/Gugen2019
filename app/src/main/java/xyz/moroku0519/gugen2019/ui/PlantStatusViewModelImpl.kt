@@ -10,6 +10,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle.Event
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.Transformations
@@ -27,12 +28,24 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
         AndroidViewModel(application), LifecycleObserver {
     private val commandRepository: CommandRepository = CommandRepositoryImpl()
     private val girlsRepository: GirlsRepository = GirlsRepositoryImpl()
-    override val plantStatus: MutableLiveData<GirlStatus> = MutableLiveData()
-    override val girlImage: LiveData<Drawable> = Transformations.map(plantStatus) {
-        ContextCompat.getDrawable(getApplication<GugenApplication>(), it.drawableId)
+    override val isDebugMode: MutableLiveData<Boolean> = MutableLiveData(false)
+    override val debugGirlStatusList: List<String> = GirlStatus.values().map { it.name }
+
+    override val debugGirlStatusId: MutableLiveData<Int> = MutableLiveData(GirlStatus.NORMAL.ordinal)
+    override val plantStatus: MutableLiveData<GirlStatus> = MediatorLiveData<GirlStatus>().also { result ->
+        result.addSource(debugGirlStatusId) { id ->
+            result.postValue(GirlStatus.fromId(id))
+        }
     }
+    override val debugPlantStatus: LiveData<GirlStatus> = Transformations.map(debugGirlStatusId) { id ->
+        GirlStatus.fromId(id)
+    }
+    override val girlImage: LiveData<Drawable> = Transformations.map(plantStatus) {
+        ContextCompat.getDrawable(getApplication<GugenApplication>().applicationContext, it.drawableId)
+    }
+
     override val isButtonVisible: LiveData<Boolean> = Transformations.map(plantStatus) { status ->
-        status == GirlStatus.POOR_WATER || status == GirlStatus.POOR_SUNLIGHT
+        status == GirlStatus.POOR_SUNLIGHT || status == GirlStatus.POOR_WATER
     }
     override val loveMeterParameter: LiveData<Float> = MutableLiveData(4.0f)
     override val message: LiveData<String> = Transformations.map(plantStatus) {
@@ -55,6 +68,11 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
                 else -> return
             }
         }
+    }
+
+    override fun onDebugButtonClick(v: View): Boolean {
+        isDebugMode.postValue(!isDebugMode.value!!)
+        return true
     }
 
     private fun GirlStatus.navigateTo(v: View, care: Care) {

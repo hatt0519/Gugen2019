@@ -27,10 +27,10 @@ class PlantStatusFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? =
-        FragmentPlantStatusBinding.inflate(inflater, container, false).apply {
-            viewModel = this@PlantStatusFragment.viewModel
-            lifecycleOwner = viewLifecycleOwner
-        }.root
+            FragmentPlantStatusBinding.inflate(inflater, container, false).apply {
+                viewModel = this@PlantStatusFragment.viewModel
+                lifecycleOwner = viewLifecycleOwner
+            }.root
 
     override fun onStart() {
         viewModel?.plantStatus?.postValue(args.girlStatus)
