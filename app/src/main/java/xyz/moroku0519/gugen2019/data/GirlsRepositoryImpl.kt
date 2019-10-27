@@ -6,6 +6,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import xyz.moroku0519.gugen2019.BuildConfig
+import xyz.moroku0519.gugen2019.BuildConfig.GIRL_NAME
 import xyz.moroku0519.gugen2019.data.entity.Girl
 
 class GirlsRepositoryImpl : GirlsRepository {
@@ -24,8 +25,6 @@ class GirlsRepositoryImpl : GirlsRepository {
             }
 
     }
-
-    override fun loadGirlLoveMeter(): Int = 0
 
     companion object {
         // TODO: 可変にする
