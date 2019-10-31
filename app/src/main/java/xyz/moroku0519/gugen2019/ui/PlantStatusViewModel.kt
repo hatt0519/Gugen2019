@@ -12,7 +12,7 @@ interface PlantStatusViewModel {
     val debugPlantStatus: LiveData<GirlStatus>
     val girlImage: LiveData<Drawable>
     val isButtonVisible: LiveData<Boolean>
-    val loveMeterParameter: LiveData<Float>
+    val loveMeterParameter: LiveData<Int>
     val message: LiveData<String>
     val buttonLabel: LiveData<String>
     val debugGirlStatusList: List<String>

@@ -47,7 +47,7 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     override val isButtonVisible: LiveData<Boolean> = Transformations.map(plantStatus) { status ->
         status == GirlStatus.POOR_SUNLIGHT || status == GirlStatus.POOR_WATER
     }
-    override val loveMeterParameter: LiveData<Float> = MutableLiveData(4.0f)
+    override val loveMeterParameter: MutableLiveData<Int> = MutableLiveData()
     override val message: LiveData<String> = Transformations.map(plantStatus) {
         it.message
     }
@@ -91,7 +91,10 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     fun loadGirl() {
         // TODO:本当は一発でLiveData変換したい...
         girlsRepository.loadGirl(
-            { girl -> plantStatus.postValue(girl.girlStatus) },
+            { girl ->
+                plantStatus.postValue(girl.girlStatus)
+                loveMeterParameter.postValue(girl.loveParameter)
+            },
             { e -> Log.e("error", e?.message) }
         )
     }

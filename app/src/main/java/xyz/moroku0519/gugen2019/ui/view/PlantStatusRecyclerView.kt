@@ -10,20 +10,19 @@ import xyz.moroku0519.gugen2019.ui.LoveSection
 
 class PlantStatusRecyclerView @JvmOverloads constructor(
     context: Context,
-    attributeSet: AttributeSet?,
+    attributeSet: AttributeSet? = null,
     defStyleInt: Int = 0
 ) : RecyclerView(
     context,
     attributeSet,
     defStyleInt
 ) {
-    private val groupAdapter: GroupAdapter<GroupieViewHolder> = GroupAdapter<GroupieViewHolder>().apply {
-        update(listOf(loveSection))
-    }
     private val loveSection: LoveSection = LoveSection()
 
     init {
-        adapter = groupAdapter
+        adapter = GroupAdapter<GroupieViewHolder>().apply {
+            add(loveSection)
+        }
     }
 
     companion object {

@@ -7,17 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import xyz.moroku0519.gugen2019.databinding.FragmentPlantStatusBinding
 
 class PlantStatusFragment : Fragment() {
     private val args: PlantStatusFragmentArgs by navArgs()
     private var viewModel: PlantStatusViewModel? = null
-    private val section: LoveSection = LoveSection()
-    private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter<GroupieViewHolder>().apply {
-        add(section)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +30,6 @@ class PlantStatusFragment : Fragment() {
         FragmentPlantStatusBinding.inflate(inflater, container, false).apply {
             viewModel = this@PlantStatusFragment.viewModel
             lifecycleOwner = viewLifecycleOwner
-            loveParameter.adapter = adapter
         }.root
 
     override fun onStart() {

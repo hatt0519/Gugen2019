@@ -7,16 +7,22 @@ import xyz.moroku0519.gugen2019.databinding.ViewLoveParameterBinding
 
 class LoveSection : Section() {
 
-    init {
-        // FIXME: ひとまず表示するところまで
-        update(listOf(LoveItem(), LoveItem(), LoveItem()))
+    fun updateLove(loveCount: Int) {
+        val itemList = mutableListOf<LoveItem>()
+        repeat((0 until loveCount).count()) {
+            itemList.add(LoveItem())
+        }
+        update(itemList)
     }
 
     class LoveItem : BindableItem<ViewLoveParameterBinding>() {
         override fun getLayout(): Int = R.layout.view_love_parameter
 
         override fun bind(viewBinding: ViewLoveParameterBinding, position: Int) {
-            viewBinding.love.playAnimation()
+            with(viewBinding.love) {
+                setMinAndMaxFrame("on")
+                playAnimation()
+            }
         }
     }
 }
