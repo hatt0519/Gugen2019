@@ -1,0 +1,38 @@
+package xyz.moroku0519.gugen2019.ui.view
+
+import android.content.Context
+import android.util.AttributeSet
+import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
+import xyz.moroku0519.gugen2019.ui.LoveSection
+
+class PlantStatusRecyclerView @JvmOverloads constructor(
+    context: Context,
+    attributeSet: AttributeSet?,
+    defStyleInt: Int = 0
+) : RecyclerView(
+    context,
+    attributeSet,
+    defStyleInt
+) {
+    private val groupAdapter: GroupAdapter<GroupieViewHolder> = GroupAdapter<GroupieViewHolder>().apply {
+        update(listOf(loveSection))
+    }
+    private val loveSection: LoveSection = LoveSection()
+
+    init {
+        adapter = groupAdapter
+    }
+
+    companion object {
+
+        @JvmStatic
+        @BindingAdapter("love")
+        fun PlantStatusRecyclerView.setLove(love: Int) {
+            loveSection.updateLove(love)
+        }
+    }
+
+}
