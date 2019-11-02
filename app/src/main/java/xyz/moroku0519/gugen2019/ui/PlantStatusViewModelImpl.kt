@@ -60,6 +60,29 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
         }
     }
 
+    override val isEffect: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    override fun updatePlantStatus(girlStatus: GirlStatus) {
+        plantStatus.value = girlStatus
+        debugGirlStatusId.postValue(girlStatus.id)
+    }
+
+    override fun updateLoveParameter() {
+        plantStatus.value?.let { status ->
+            when (status) {
+                GirlStatus.GOOD -> {
+                    loveMeterParameter.postValue(
+                        loveMeterParameter.value?.plus(1)
+                    )
+                    isEffect.value = true
+                }
+                else -> {
+                    // do noting
+                }
+            }
+        }
+    }
+
     override fun onButtonClick(v: View) {
         plantStatus.value?.let { status ->
             when (status) {

@@ -17,6 +17,9 @@ interface PlantStatusViewModel {
     val buttonLabel: LiveData<String>
     val debugGirlStatusList: List<String>
     val debugGirlStatusId: MutableLiveData<Int>
+    val isEffect: LiveData<Boolean>
+    fun updateLoveParameter()
+    fun updatePlantStatus(girlStatus: GirlStatus)
     fun onButtonClick(v: View)
-    fun onDebugButtonClick(v: View) : Boolean
+    fun onDebugButtonClick(v: View): Boolean
 }

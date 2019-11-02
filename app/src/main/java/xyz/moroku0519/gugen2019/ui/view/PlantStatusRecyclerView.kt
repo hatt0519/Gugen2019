@@ -28,9 +28,9 @@ class PlantStatusRecyclerView @JvmOverloads constructor(
     companion object {
 
         @JvmStatic
-        @BindingAdapter("love")
-        fun PlantStatusRecyclerView.setLove(love: Int) {
-            loveSection.updateLove(love)
+        @BindingAdapter("love", "isEffect", requireAll = false)
+        fun PlantStatusRecyclerView.setLove(love: Int, isEffect: Boolean = false) {
+            loveSection.updateLove(love, isEffect)
         }
     }
 
