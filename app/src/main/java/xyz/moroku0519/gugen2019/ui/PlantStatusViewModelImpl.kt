@@ -74,7 +74,7 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
             when (status) {
                 GirlStatus.GOOD -> {
                     loveMeterParameter.value?.let { love ->
-                        girlsRepository.updateGirl(girl.updateGirlFromLoveParameter(love),
+                        girlsRepository.updateGirl(girl.updateGirlFromLoveParameter(love).girlRequest,
                             {
                                 loveMeterParameter.postValue(love + 1)
                             },
@@ -122,8 +122,8 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     fun loadGirl() {
         // TODO:本当は一発でLiveData変換したい...
         girlsRepository.loadGirl(
-            { girl ->
-                this.girl = girl
+            { girlResponse ->
+                this.girl = girlResponse.toGirl()
                 plantStatus.postValue(girl.girlStatus)
                 loveMeterParameter.postValue(girl.loveParameter)
             },

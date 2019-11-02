@@ -6,13 +6,14 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import xyz.moroku0519.gugen2019.BuildConfig
-import xyz.moroku0519.gugen2019.data.entity.Girl
+import xyz.moroku0519.gugen2019.data.dto.GirlRequest
+import xyz.moroku0519.gugen2019.data.dto.GirlResponse
 
 class GirlsRepositoryImpl : GirlsRepository {
     private val collectionReference: CollectionReference =
             FirebaseFirestore.getInstance().collection("girls")
 
-    override fun loadGirl(onSuccess: (girl: Girl) -> Unit, onError: (e: Exception?) -> Unit) {
+    override fun loadGirl(onSuccess: (girl: GirlResponse) -> Unit, onError: (e: Exception?) -> Unit) {
         collectionReference
                 .document(GIRL_NAME)
                 .get()
@@ -25,7 +26,7 @@ class GirlsRepositoryImpl : GirlsRepository {
 
     }
 
-    override fun updateGirl(girl: Girl, onSuccess: () -> Unit, onError: (e: Exception?) -> Unit) {
+    override fun updateGirl(girl: GirlRequest, onSuccess: () -> Unit, onError: (e: Exception?) -> Unit) {
         collectionReference
                 .document(GIRL_NAME)
                 .set(girl)
