@@ -33,7 +33,8 @@ class PlantStatusFragment : Fragment() {
             }.root
 
     override fun onStart() {
-        viewModel?.plantStatus?.postValue(args.girlStatus)
+        viewModel?.updatePlantStatus(args.girlStatus)
+        viewModel?.updateLoveParameter()
         super.onStart()
     }
 
