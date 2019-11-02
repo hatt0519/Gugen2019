@@ -22,4 +22,5 @@ interface PlantStatusViewModel {
     fun updatePlantStatus(girlStatus: GirlStatus)
     fun onButtonClick(v: View)
     fun onDebugButtonClick(v: View): Boolean
+    fun onClickGirl(v: View) // デバッグモード用。ライトオフを実装するために一旦追加したもの。
 }
