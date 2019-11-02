@@ -11,14 +11,14 @@ class LoveSection : Section() {
         val itemList = mutableListOf<LoveItem>()
         repeat((0 until loveCount).count()) {
             when (it == loveCount - 1) {
-                true -> itemList.add(LoveItem(isEffect))
-                false -> itemList.add(LoveItem())
+                true -> itemList.add(LoveItem(it, isEffect))
+                false -> itemList.add(LoveItem(it))
             }
         }
         update(itemList)
     }
 
-    data class LoveItem(private val isEffect: Boolean = false) : BindableItem<ViewLoveParameterBinding>(0) {
+    data class LoveItem(private val id: Int, private val isEffect: Boolean = false) : BindableItem<ViewLoveParameterBinding>(id.toLong()) {
         override fun getLayout(): Int = R.layout.view_love_parameter
 
         override fun bind(viewBinding: ViewLoveParameterBinding, position: Int) {

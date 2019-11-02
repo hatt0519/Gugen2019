@@ -79,11 +79,11 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
                         girlsRepository.updateGirl(girl.updateGirlFromLoveParameter(loveToUpdate).girlRequest,
                             {
                                 loveMeterParameter.postValue(loveToUpdate)
+                                isEffect.postValue(true)
                             },
                             { e ->
                                 Log.e("error", e?.message)
                             })
-                        isEffect.value = true
                     }
                 }
                 else -> {
@@ -100,6 +100,7 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
                 GirlStatus.POOR_WATER -> status.navigateTo(v, Care.WaterCare(true))
                 else -> return
             }
+            isEffect.postValue(false)
         }
     }
 
