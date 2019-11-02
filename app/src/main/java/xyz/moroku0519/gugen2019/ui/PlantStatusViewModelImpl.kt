@@ -22,12 +22,14 @@ import xyz.moroku0519.gugen2019.data.CommandRepositoryImpl
 import xyz.moroku0519.gugen2019.data.GirlsRepository
 import xyz.moroku0519.gugen2019.data.GirlsRepositoryImpl
 import xyz.moroku0519.gugen2019.data.entity.Care
+import xyz.moroku0519.gugen2019.data.entity.Girl
 import xyz.moroku0519.gugen2019.data.entity.GirlStatus
 
 class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
         AndroidViewModel(application), LifecycleObserver {
     private val commandRepository: CommandRepository = CommandRepositoryImpl()
     private val girlsRepository: GirlsRepository = GirlsRepositoryImpl()
+    private var girl: Girl = Girl()
     override val isDebugMode: MutableLiveData<Boolean> = MutableLiveData(false)
     override val debugGirlStatusList: List<String> = GirlStatus.values().map { it.name }
 
@@ -71,10 +73,16 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
         plantStatus.value?.let { status ->
             when (status) {
                 GirlStatus.GOOD -> {
-                    loveMeterParameter.postValue(
-                        loveMeterParameter.value?.plus(1)
-                    )
-                    isEffect.value = true
+                    loveMeterParameter.value?.let { love ->
+                        girlsRepository.updateGirl(girl.updateGirlFromLoveParameter(love),
+                            {
+                                loveMeterParameter.postValue(love + 1)
+                            },
+                            { e ->
+                                Log.e("error", e?.message)
+                            })
+                        isEffect.value = true
+                    }
                 }
                 else -> {
                     // do noting
@@ -115,6 +123,7 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
         // TODO:本当は一発でLiveData変換したい...
         girlsRepository.loadGirl(
             { girl ->
+                this.girl = girl
                 plantStatus.postValue(girl.girlStatus)
                 loveMeterParameter.postValue(girl.loveParameter)
             },
