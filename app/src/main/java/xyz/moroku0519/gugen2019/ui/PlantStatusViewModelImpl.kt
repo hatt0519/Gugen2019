@@ -127,7 +127,7 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
                                 actionPlantStatusToLoading.girlStatus = this
                             }
                 )
-        commandRepository.send(care)
+        if (!isDebugMode.value!!) commandRepository.send(care)
     }
 
     @OnLifecycleEvent(Event.ON_CREATE)
