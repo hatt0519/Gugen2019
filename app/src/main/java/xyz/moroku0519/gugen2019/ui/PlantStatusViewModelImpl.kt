@@ -74,9 +74,10 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
             when (status) {
                 GirlStatus.GOOD -> {
                     loveMeterParameter.value?.let { love ->
-                        girlsRepository.updateGirl(girl.updateGirlFromLoveParameter(love).girlRequest,
+                        val loveToUpdate = love + 1
+                        girlsRepository.updateGirl(girl.updateGirlFromLoveParameter(loveToUpdate).girlRequest,
                             {
-                                loveMeterParameter.postValue(love + 1)
+                                loveMeterParameter.postValue(loveToUpdate)
                             },
                             { e ->
                                 Log.e("error", e?.message)
