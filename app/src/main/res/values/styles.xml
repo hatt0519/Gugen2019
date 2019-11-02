@@ -14,13 +14,4 @@
         <item name="android:background">@drawable/extended_fab_bg</item>
     </style>
 
-
-    <style name="HeartRating" parent="@android:style/Widget.RatingBar">
-        <item name="android:stepSize">1</item>
-        <item name="android:numStars">10</item>
-        <item name="android:progressDrawable">@drawable/heart_rating_bar</item>
-        <item name="android:minHeight">36dp</item>
-        <item name="android:minWidth">36dp</item>
-    </style>
-
 </resources>
