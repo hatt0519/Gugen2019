@@ -16,6 +16,8 @@
             android:id="@+id/plant_status"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{viewModel::onClickGirl}"
             android:src="@{viewModel.girlImage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

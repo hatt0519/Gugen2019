@@ -15,6 +15,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.Transformations
 import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
 import xyz.moroku0519.gugen2019.GugenApplication
 import xyz.moroku0519.gugen2019.R
 import xyz.moroku0519.gugen2019.data.CommandRepository
@@ -73,6 +74,16 @@ class PlantStatusViewModelImpl(application: Application) : PlantStatusViewModel,
     override fun onDebugButtonClick(v: View): Boolean {
         isDebugMode.postValue(!isDebugMode.value!!)
         return true
+    }
+
+    override fun onClickGirl(v: View) {
+        // 突貫工事。ひとまずのLED OFF
+        isDebugMode.value?.let { isDebug ->
+            if (isDebug) {
+                commandRepository.send(Care.SunlightCare(false))
+                Snackbar.make(v, "ライトをOFFにしました", Snackbar.LENGTH_LONG).show()
+            }
+        }
     }
 
     private fun GirlStatus.navigateTo(v: View, care: Care) {

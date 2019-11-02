@@ -18,5 +18,6 @@ interface PlantStatusViewModel {
     val debugGirlStatusList: List<String>
     val debugGirlStatusId: MutableLiveData<Int>
     fun onButtonClick(v: View)
-    fun onDebugButtonClick(v: View) : Boolean
+    fun onDebugButtonClick(v: View): Boolean
+    fun onClickGirl(v: View) // デバッグモード用。ライトオフを実装するために一旦追加したもの。
 }
